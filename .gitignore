@@ -1,0 +1,5 @@
+trained/
+__pycache__
+*.svg
+*~
+*.cache.npz

@@ -1,0 +1,108 @@
+# Copyright (C) 2021-2023 Mo Zhou <cdluminate@gmail.com>.
+# Source code will be released under Apache-2.0 license if paper accepted.
+# --- Dataset Meta Information ---
+fashion-mnist:
+    path: ~/.torch/FashionMNIST/raw/
+
+cifar10:
+    path: ~/.torch/cifar-10-batches-py/
+
+imagenet:
+    path: ~/.torch/ilsvrc/
+
+# -- fashion --
+
+fa_mlp:
+    epoch: 16
+    lr: 0.001
+    batchsize: 1000
+    batchsize_atk: 16
+fa_mlpd:
+    epoch: 16
+    lr: 0.001
+    batchsize: 1000
+    batchsize_atk: 1000
+fa_c2f2:
+    epoch: 30 # [lock]
+    lr: 0.001
+    batchsize: 1000
+    batchsize_atk: 128
+fa_c2f2d:
+    epoch: 30 # [lock]
+    lr: 0.001
+    batchsize: 1000
+    batchsize_atk: 1000
+
+# -- cifar 10 --
+
+ct_res18:
+    epoch: 200
+    lr: 0.1
+    lrstep: [100, 150] # [lock] [according to Madry's Cifar challenge]
+    momentum: 0.9
+    weight_decay: 2e-4  # [lock] this is quite important
+    batchsize: 256
+    batchsize_atk: 16
+    reference_accuracy: 0.91 # kaiming resnet oirignal paper
+
+ct_res18d:
+    epoch: 200
+    lr: 0.1
+    lrstep: [100, 150]  # pending # only 0.826, far from 0.87
+    momentum: 0.9
+    weight_decay: 2e-4
+    batchsize: 128
+    batchsize_atk: 128
+# PGD step 7 https://github.com/MadryLab/cifar10_challenge/issues/25 (wide)
+    reference_accuracy_adv003_wide: 0.87 
+# https://arxiv.org/pdf/1706.06083.pdf (simple resnet18) ***
+    reference_accuracy_adv005_simple: 0.79
+# madrylab issues
+    reference_accuracy_adv006_20step: 0.47
+
+# -- ilsvrc --
+
+il_r152:
+    epoch: 200 # stub: we don't actually train this
+    lr: 0.1
+    lrstep: [100, 150]
+    momemtum: 0.9
+    batchsize: 256
+    #batchsize_atk: 32  # 8GB
+    batchsize_atk: 1
+
+il_swin:
+    epoch: 200  # STUB: we don't actually train this.
+    lr: 0.1
+    lrstep: [100, 150]
+    momemtum: 0.9
+    batchsize: 256
+    #batchsize_atk: 32  # 8GB
+    batchsize_atk: 1
+
+il_r50:
+    epoch: 200 # stub: we don't actually train this
+    lr: 0.1
+    lrstep: [100, 150]
+    momemtum: 0.9
+    batchsize: 256
+    #batchsize_atk: 32  # 8GB
+    batchsize_atk: 1
+
+il_madry4:
+    epoch: 200  # STUB: we don't actually train this.
+    lr: 0.1
+    lrstep: [100, 150]
+    momemtum: 0.9
+    batchsize: 256
+    #batchsize_atk: 32  # 8GB
+    batchsize_atk: 1
+
+il_madry8:
+    epoch: 200  # STUB: we don't actually train this.
+    lr: 0.1
+    lrstep: [100, 150]
+    momemtum: 0.9
+    batchsize: 256
+    #batchsize_atk: 32  # 8GB
+    batchsize_atk: 1
